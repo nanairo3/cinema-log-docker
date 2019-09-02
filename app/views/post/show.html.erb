@@ -1,5 +1,8 @@
 <div class="main">
     <div class = "container">
         <%= image_tag @cinema.image %>
+        <% @posts.each do |post| %>
+            <%= post.content %>
+        <% end %>
     </div>
 </div>

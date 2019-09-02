@@ -1,7 +1,7 @@
 class PostController < ApplicationController
   def show
     @cinema = Cinema.find(params[:id])
-    @post = Post.find_by(cinema_id: @cinema.id)
+    @posts = Post.where(cinema_id: @cinema.id)
   end
 
   def new
