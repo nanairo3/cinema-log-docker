@@ -53,7 +53,7 @@ body {
 }
 
 .container {
-  max-width: 600px;
+  max-width: 1000px;
   margin: 60px auto;
   padding-left: 15px;
   padding-right: 15px;
@@ -63,7 +63,7 @@ body {
 /* ヘッダー ================================ */
 header {
   height: 64px;
-  position: absolute;
+  position: fixed;
   background-color: #3ecdc6;
   z-index: 1;
   width: 100%;
@@ -238,4 +238,14 @@ header {
   width: 100%;
   border-radius: 0 0 2px 2px;
   font-size: 14px;
+}
+
+/* cinema item */
+.cinema_index_item{
+  float: left;
+  .cinema_imege {
+    width: 33%;
+    margin: 0;
+    text-align: center;
+  }
 }
