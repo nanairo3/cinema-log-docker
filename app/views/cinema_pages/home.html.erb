@@ -1,0 +1,10 @@
+<div class="about-main">
+  <div class="container">
+      <% @cinemas.each do |cinema| %>
+            <div class = "cinema-index-item">
+                <%= image_tag 'ライオンキング.jpg' %>
+                <%= cinema.name %>
+            </div>
+      <% end %>
+  </div>
+</div>

@@ -1,0 +1,2 @@
+module CinemaPagesHelper
+end
