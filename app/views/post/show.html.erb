@@ -1,6 +1,9 @@
 <div class="main">
     <div class = "container">
         <%= image_tag @cinema.image %>
+        <a href="#" class="btn-circle-3d">
+            <i class="material-icons"> message </i>
+        </a>
         <% @posts.each do |post| %>
             <%= post.content %>
         <% end %>
