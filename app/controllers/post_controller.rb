@@ -5,6 +5,7 @@ class PostController < ApplicationController
   end
 
   def new
+    @cinema = Cinema.find(params[:id])
   end
 
   def create
