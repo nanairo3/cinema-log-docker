@@ -4,7 +4,7 @@
       <% @cinemas.each do |cinema| %>
         <div class = "cinema_image">
           <%= link_to post_show_path(cinema.id) do %>
-            <%= image_tag cinema.image, :width => '33%' %>
+            <%= image_tag cinema.image, :width => '240px', :height => '340px' %>
             <p><%= cinema.name %></p>
           <% end %>
         </div>
