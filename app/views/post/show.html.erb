@@ -1,7 +1,7 @@
 <div class="main">
     <div class = "container">
         <%= image_tag @cinema.image %>
-        <%= link_to(post_new_path(@cinema.id), class: "btn-circle-3d") do %>
+        <%= link_to("#{@cinema.id}/new", class: "btn-circle-3d") do %>
             <i class="material-icons"> message </i>
         <% end %>
         <a href="#" class="btn-circle-3d">
