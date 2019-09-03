@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    resources :users
+  end
   root 'cinema_pages#home'
   get 'post/:id/new' => 'post#new'
   post 'post/:id/create' => 'post#create'
