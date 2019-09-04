@@ -1,4 +1,7 @@
 class PostController < ApplicationController
+  before_action :authenticate_user, {only: [:new, :create, :edit,:update, :destroy]}
+  before_action :ensure_correct_user, {only: [:edit, :update, :destroy]}
+
   def show
     @cinema = Cinema.find(params[:id])
     @posts = Post.where(cinema_id: @cinema.id)
@@ -25,6 +28,14 @@ class PostController < ApplicationController
   end
 
   def destroy
+  end
+
+  def ensure_correct_user
+    @post = Post.find_by(id: params[:id])
+    if current_user.id != @post.user_id || current_user.admin
+      flash[:notice] = "権限がありません"
+      redirect_to("/posts/index")
+    end
   end
 
   def post_params

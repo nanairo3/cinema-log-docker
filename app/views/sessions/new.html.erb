@@ -7,7 +7,7 @@
                     <%= f.label :email, 'メールアドレス' %>
                     <%= f.text_field :email, id: 'session_email' %>
                     <%= f.label :password, 'パスワード' %>
-                    <%= f.text_field :password, id: 'session_password' %>
+                    <%= f.password_field :password, id: 'session_password' %>
                     <%= f.submit 'Login', class: 'btn btn-primary' %>
                 <% end %>
                 <%= link_to("新規登録", "/users/new", class: "seesion-new") %>
