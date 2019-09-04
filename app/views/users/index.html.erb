@@ -2,18 +2,18 @@
     <div class = "container">
         <h1>ユーザ一覧</h1>
         <%= link_to '新規登録', "/users/new", class: 'btn btn-primary' %>
-        <table>
+        <table class="table-hover" >
             <thead>
                 <tr>
-                    <th><%= User.human_attribute_name(:name) %></th>
-                    <th><%= User.human_attribute_name(:email) %></th>
-                    <th><%= User.human_attribute_name(:admin) %></th>
-                    <th><%= User.human_attribute_name(:created_at) %></th>
-                    <th><%= User.human_attribute_name(:updated_at) %></th>
+                    <th>名前</th>
+                    <th>メールアドレス</th>
+                    <th>管理者権限</th>
+                    <th>作成日</th>
+                    <th>更新日</th>
                 </tr>
             </thead>
             <tbody>
-                <%= @users.each do |user| %>
+                <% @users.each do |user| %>
                     <tr>
                         <td><%= user.name%></td>
                         <td><%= user.email %></td>

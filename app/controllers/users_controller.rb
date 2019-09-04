@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  before_action :reqire_admin
   
   def index
     @users = User.all
@@ -49,8 +48,6 @@ class UsersController < ApplicationController
       params.require(:user).permit(:name, :email, :admin, :password, :password_confirmation)
     end
     
-    def reqire_admin
-      redirect_to root_url unless current_user.admin?
-    end
+    
 
 end
