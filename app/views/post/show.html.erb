@@ -1,14 +1,23 @@
 <div class="main">
     <div class = "container">
-        <%= image_tag @cinema.image %>
-        <%= link_to("#{@cinema.id}/new", class: "btn-circle-3d") do %>
-            <i class="material-icons"> message </i>
-        <% end %>
-        <a href="#" class="btn-circle-3d">
-            <i class="material-icons">group_add </i>
-        </a>
-        <% @posts.each do |post| %>
-            <%= post.content %>
-        <% end %>
+        <div class="content1">
+            <div >
+                <%= image_tag @cinema.image %>
+            </div>
+            <div>
+                <%= link_to("#{@cinema.id}/new", class: "btn-circle-3d") do %>
+                    <i class="material-icons"> message </i>
+                <% end %>
+            </div>
+        </div>
+        <div class="content2">
+            <% @posts.each do |post| %>
+                <div>
+                <div class="posts-right">
+                    <%= post.content %>
+                </div>
+                </div>
+            <% end %>
+        </div>
     </div>
 </div>
