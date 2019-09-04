@@ -12,10 +12,10 @@
         </div>
         <div class="content2">
             <% @posts.each do |post| %>
+                <% user = post.user %>
                 <div>
-                <div class="posts-right">
+                    <%= link_to(user.name, "/users/#{user.id}") %>
                     <%= post.content %>
-                </div>
                 </div>
             <% end %>
         </div>

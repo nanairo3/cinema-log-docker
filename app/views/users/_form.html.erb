@@ -1,0 +1,25 @@
+<div class="form users-form">
+    <div class="form-body">
+        <% if user.errors.present? %>
+            <ul id="error_explanation">
+                <%= user.errors.full_messages.each do |msg| %>
+                    <div class="form-error">
+                        <li><%= msg %></li>
+                    </div>
+                <% end %>
+            </ul>
+        <% end %>
+
+        <%= form_with model:  user, local: true do |f| %>
+            <%= f.label :name, '名前' %>
+            <%= f.text_field :name %>
+            <%= f.label :email, 'メールアドレス' %>
+            <%= f.text_field :name %>
+            <%= f.label :password, 'パスワード' %>
+            <%= f.text_field :password %>
+            <%= f.label :password_confilmation, 'パスワード(確認)' %>
+            <%= f.text_field :password_confilmation %>
+            <%= f.submit '登録する', class: "btn btn-primary" %>
+        <% end %>
+    </div>
+</div>

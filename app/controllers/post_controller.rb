@@ -2,6 +2,7 @@ class PostController < ApplicationController
   def show
     @cinema = Cinema.find(params[:id])
     @posts = Post.where(cinema_id: @cinema.id)
+    @user = User.find(params[:id])
   end
 
   def new
@@ -12,6 +13,7 @@ class PostController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.cinema_id = params[:id]
+    @post.user_id = current_user.id
     if @post.save
       flash[:notice] = "投稿を作成しました"
       redirect_to post_path

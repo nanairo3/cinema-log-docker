@@ -4,9 +4,7 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   post '/logout' => 'sessions#destroy'
   
-  namespace :admin do
-    resources :users
-  end
+  resources :users
   root 'cinema_pages#home'
   get 'post/:id/new' => 'post#new'
   post 'post/:id/create' => 'post#create'

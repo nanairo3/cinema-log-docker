@@ -1,7 +1,7 @@
 <div class="main">
     <div class = "container">
         <h1>ユーザ一覧</h1>
-        <%= link_to '新規登録', new_admin_user_path, class: 'btn btn-primary' %>
+        <%= link_to '新規登録', "/users/new", class: 'btn btn-primary' %>
         <table>
             <thead>
                 <tr>
@@ -15,15 +15,12 @@
             <tbody>
                 <%= @users.each do |user| %>
                     <tr>
-                        <td><%= link_to user.name, [:admin, user] %></td>
+                        <td><%= user.name%></td>
                         <td><%= user.email %></td>
                         <td><%= user.admin? ? 'あり' : 'なし' %></td>
                         <td><%= user.created_at %></td>
                         <td><%= user.updated_at %></td>
-                        <td>
-                            <%= link_to '編集', edit_admin_user_path(user), class: 'btn btn-primary' %>
-                            <%= link_to '削除', [:admin, user], method: :delete, data: {confirm: "ユーザ「#{user.name}」を削除しますがよろしいですか？"}, class: 'btn btn-danger' %>
-                        </td>
+                        
                     </tr>
                 <% end %>
             </tbody>
