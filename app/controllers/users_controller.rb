@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
-  
+  before_action :authenticate_user, {only: [:index, :edit, :update, :destroy]}
+  before_action :ensure_correct_user, {only: [:edit, :update, :destroy]}
+
   def index
     @users = User.all
   end
@@ -42,12 +44,17 @@ class UsersController < ApplicationController
     redirect_to admin_user_url, notice: "ユーザ「#{@user.name}」を削除しましたしました"
   end
 
+  def ensure_correct_user
+    @user = User.find(params[:id])
+    if current_user.id != @user.id || current_user.admin!
+      flash[:notice] = "権限がありません"
+      redirect_to("/posts/index")
+    end
+  end
+
   private
-    
     def user_params
       params.require(:user).permit(:name, :email, :admin, :password, :password_confirmation)
     end
-    
-    
 
 end

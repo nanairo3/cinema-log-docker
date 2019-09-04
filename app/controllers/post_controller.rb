@@ -32,7 +32,7 @@ class PostController < ApplicationController
 
   def ensure_correct_user
     @post = Post.find_by(id: params[:id])
-    if current_user.id != @post.user_id || current_user.admin
+    if current_user.id != @post.user_id || current_user.admin!
       flash[:notice] = "権限がありません"
       redirect_to("/posts/index")
     end
