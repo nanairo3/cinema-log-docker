@@ -56,17 +56,21 @@
       color: #000000;
       &:hover{
         color: #3ecdc6;
-        }
       }
+    }
   }
   p {
     margin-left: 5px;
     font-size: 5px;
     padding-left: 17px;
   }
-  .post-user-content{
-    padding: 10px 15px;
-  }
+    .post-user-content{
+      padding: 10px 15px;
+    }
+    .post-menu {
+      text-align: right;
+      padding: 5px 15px 10px 0;
+    }
   }
 }
 
