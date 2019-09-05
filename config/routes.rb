@@ -14,6 +14,6 @@ Rails.application.routes.draw do
   # post '/create' => 'post#create'
   get 'post/:id/edit' => 'post#edit'
   post 'post/update' =>'post#update'
-  get 'post/destroy' => 'post#detroy'
+  post 'post/:id/destroy' => 'post#detroy'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
