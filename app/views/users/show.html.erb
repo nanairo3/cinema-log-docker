@@ -7,14 +7,16 @@
                <% end %>
            </h1>
            <% if @user.id == current_user.id || current_user.admin? %>
-               <%= link_to("編集", "/users/#{@user.id}/edit") %>
-               <%= link_to("削除", "/users/#{@user.id}/destroy") if current_user.admin? %>
+               <div class="square-content">
+                   <%= link_to("編集", "/users/#{@user.id}/edit" , class: "square-btn") %>
+                   <%= link_to("削除", "/users/#{@user.id}/destroy", class: "square-btn") if current_user.admin? %>
+               </div>
            <% end %>
            <% @posts.each do |post| %>
               <% cinema = Cinema.find(post.cinema_id) %>
             <div class="post-index-item">
                 <div>
-                    <%= link_to("/post/#{cinema.id}") do %>
+                    <%= link_to("/posts/#{cinema.id}") do %>
                         <%= image_tag cinema.image, :width => '120px', :height => '170px'  %>
                     <% end %>
                     <%= post.content %>

@@ -1,4 +1,4 @@
-class PostController < ApplicationController
+class PostsController < ApplicationController
   before_action :authenticate_user, {only: [:create, :edit,:update, :destroy]}
   before_action :authenticate_user_new, {only: [:new]}
   before_action :ensure_correct_user, {only: [:edit, :update, :destroy]}
@@ -26,9 +26,24 @@ class PostController < ApplicationController
   end
 
   def edit
+    @post = Post.find(params[:id])
+  end
+  
+  def update
+    @post = Post.find(params[:id])
+    
+    if @post.update(post_params)
+      redirect_to("/posts/#{@post.cinema_id}")
+      flash[:notice] = "更新しました"
+    else
+      render("posts/edit")
+    end
   end
 
   def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to "/posts/#{@post.cinema_id}", notice: "削除しましたしました"
   end
 
   def ensure_correct_user

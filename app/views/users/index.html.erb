@@ -1,24 +1,18 @@
-<div class="main">
+<div class="main users-index">
     <div class = "container">
         <div>
-            <h1>ユーザ一覧</h1>
-                <% if current_user.admin %>
-                    <%= link_to '新規登録', "/users/new", class: 'btn btn-primary' %>
-                <% end %>
+        <h1 class="users-heading">ユーザ一覧</h1>
+            <% if current_user.admin %>
+                <%= link_to '新規登録', "/users/new", class: 'btn btn-primary' %>
+            <% end %>
         </div>
-        <table class="table-hover" >
-            <thead>
-                <tr>
-                    <th>名前</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% @users.each do |user| %>
-                    <tr>
-                        <td><%= link_to(user.name,"/users/#{user.id}") %></td>
-                    </tr>
-                <% end %>
-            </tbody>
-        </table>
+        <% @users.each do |user| %>
+            <div class="users-index-item">
+                <hr>
+                ユーザ名：
+                <%= link_to(user.name,"/users/#{user.id}") %>
+            </div>
+        <% end %>
+        <hr class = "users-index-item">
     </div>
 </div>

@@ -1,8 +1,7 @@
 <div class="main">
     <div class = "container">
-        <h1>ユーザの編集</h1>
+        <div class = "form-heading user-new">ユーザの編集</div>
         <div class="nav.justify-content-end">
-            <%= link_to '一覧', '/users', class: 'nav-link' %>
             <%= render partial: 'form', locals: {user: @user} %>
         </div>
     </div>
