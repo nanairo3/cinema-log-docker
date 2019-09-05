@@ -1,36 +1,26 @@
-<div class="main">
+<div class="main user-show">
     <div class = "container">
-        <h1>ユーザの詳細</h1>
-        <div class="nav.justify-content-end">
-            <table class="table-hover">
-                <tbody>
-                    <tr>
-                        <th><%= User.human_attribute_name(:id) %></th>
-                        <td><%= @user.id %></td>
-                    </tr>
-                    <tr>
-                        <th><%= User.human_attribute_name(:name) %></th>
-                        <td><%= @user.name %></td>
-                    </tr>
-                    <tr>
-                        <th><%= User.human_attribute_name(:email) %></th>
-                        <td><%= @user.email %></td>
-                    </tr>
-                    <tr>
-                        <th><%= User.human_attribute_name(:admin) %></th>
-                        <td><%= @user.admin? ? 'あり' : 'なし' %></td>
-                    </tr>
-                    <tr>
-                        <th><%= User.human_attribute_name(:created_at) %></th>
-                        <td><%= @user.created_at %></td>
-                    </tr>
-                    <tr>
-                        <th><%= User.human_attribute_name(:updated_at) %></th>
-                        <td><%= @user.updated_at %></td>
-                    </tr>
-                </tbody>
-            </table>
-           
+        <div class="user">
+           <h1>User Name: <%= @user.name %>
+               <% if current_user.admin %>
+                   @管理者
+               <% end %>
+           </h1>
+           <% if @user.id == current_user.id || current_user.admin? %>
+               <%= link_to("編集", "/users/#{@user.id}/edit") %>
+               <%= link_to("削除", "/users/#{@user.id}/destroy") if current_user.admin? %>
+           <% end %>
+           <% @posts.each do |post| %>
+              <% cinema = Cinema.find(post.cinema_id) %>
+            <div class="post-index-item">
+                <div>
+                    <%= link_to("/post/#{cinema.id}") do %>
+                        <%= image_tag cinema.image, :width => '120px', :height => '170px'  %>
+                    <% end %>
+                    <%= post.content %>
+                </div>
+              </div>
+            <% end %>
         </div>
     </div>
 </div>

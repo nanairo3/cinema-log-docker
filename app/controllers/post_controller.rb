@@ -1,5 +1,6 @@
 class PostController < ApplicationController
-  before_action :authenticate_user, {only: [:new, :create, :edit,:update, :destroy]}
+  before_action :authenticate_user, {only: [:create, :edit,:update, :destroy]}
+  before_action :authenticate_user_new, {only: [:new]}
   before_action :ensure_correct_user, {only: [:edit, :update, :destroy]}
 
   def show
@@ -35,6 +36,13 @@ class PostController < ApplicationController
     if !(current_user.admin?) && current_user.id != @post.user_id
       flash[:notice] = "権限がありません"
       redirect_to("/post/#{@post.cinema_id}")
+    end
+  end
+  
+  def authenticate_user_new
+    if current_user == nil
+      flash[:notice] = "ログインして投稿しませんか？"
+      redirect_to("/login")
     end
   end
 

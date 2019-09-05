@@ -1,26 +1,21 @@
 <div class="main">
     <div class = "container">
-        <h1>ユーザ一覧</h1>
-        <%= link_to '新規登録', "/users/new", class: 'btn btn-primary' %>
+        <div>
+            <h1>ユーザ一覧</h1>
+                <% if current_user.admin %>
+                    <%= link_to '新規登録', "/users/new", class: 'btn btn-primary' %>
+                <% end %>
+        </div>
         <table class="table-hover" >
             <thead>
                 <tr>
                     <th>名前</th>
-                    <th>メールアドレス</th>
-                    <th>管理者権限</th>
-                    <th>作成日</th>
-                    <th>更新日</th>
                 </tr>
             </thead>
             <tbody>
                 <% @users.each do |user| %>
                     <tr>
-                        <td><%= user.name%></td>
-                        <td><%= user.email %></td>
-                        <td><%= user.admin? ? 'あり' : 'なし' %></td>
-                        <td><%= user.created_at %></td>
-                        <td><%= user.updated_at %></td>
-                        
+                        <td><%= link_to(user.name,"/users/#{user.id}") %></td>
                     </tr>
                 <% end %>
             </tbody>
