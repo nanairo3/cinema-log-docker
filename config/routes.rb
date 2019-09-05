@@ -6,17 +6,13 @@ Rails.application.routes.draw do
   
   resources :users
   root 'cinema_pages#home'
+  get 'posts/:id' => 'posts#show'
   get 'posts/:id/new' => 'posts#new'
   post 'posts/:id/create' => 'posts#create'
   get 'posts/:id/edit' => 'posts#edit'
-  post 'posts/:id/update' => 'posts#create'
+  patch 'posts/:id/update' => 'posts#update'
+  post 'posts/:id/update' => 'posts#update'
   post 'posts/:id/destroy' => 'posts#destroy'
-  resources :posts, only: [:show]
-  # get 'post/:id/new' => 'post#new'
-  # get 'post/:id' => 'post#show'
-  # post '/create' => 'post#create'
-  get 'posts/:id/edit' => 'posts#edit'
-  post 'posts/update' =>'posts#update'
-  post 'posts/:id/destroy' => 'posts#detroy'
+  #resources :posts, only: [:show]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

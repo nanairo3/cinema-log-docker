@@ -3,7 +3,7 @@
         <div class = "form-heading">投稿の編集</div>
         <div class = "form">
             <div class="form-body" >
-                <%= form_with model: @post do |f| %>
+                <%= form_with model: @post, url: "/posts/#{@post.id}/update" do |f| %>
                     <%= f.label :content, '投稿' %>
                     <%= f.text_field :content %>
                     <%= f.submit '更新する', class: "btn btn-primary" %>

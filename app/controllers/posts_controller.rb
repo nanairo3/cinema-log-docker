@@ -19,7 +19,7 @@ class PostsController < ApplicationController
     @post.user_id = current_user.id
     if @post.save
       flash[:notice] = "投稿を作成しました"
-      redirect_to post_path
+      redirect_to("/posts/#{@post.cinema_id}")
     else
       render('post/new')
     end
@@ -28,11 +28,10 @@ class PostsController < ApplicationController
   def edit
     @post = Post.find(params[:id])
   end
-  
+
   def update
     @post = Post.find(params[:id])
-    
-    if @post.update(post_params)
+    if @post.update(post_params_edit)
       redirect_to("/posts/#{@post.cinema_id}")
       flash[:notice] = "更新しました"
     else
@@ -44,6 +43,14 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.destroy
     redirect_to "/posts/#{@post.cinema_id}", notice: "削除しましたしました"
+  end
+
+  def post_params
+    params.require(:post).permit(:content, :cinema_id)
+  end
+
+  def post_params_edit
+    params.require(:post).permit(:cinema_id, :content)
   end
 
   def ensure_correct_user
@@ -61,7 +68,4 @@ class PostsController < ApplicationController
     end
   end
 
-  def post_params
-    params.require(:post).permit(:content, :cinema_id)
-  end
 end
