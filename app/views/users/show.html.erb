@@ -2,11 +2,11 @@
     <div class = "container">
         <div class="user">
            <h1>User Name: <%= @user.name %>
-               <% if current_user.admin %>
+               <% if current_user && current_user.admin %>
                    @管理者
                <% end %>
            </h1>
-           <% if @user.id == current_user.id || current_user.admin? %>
+           <% if current_user && (@user.id == current_user.id || current_user.admin?) %>
                <div class="square-content">
                    <%= link_to("編集", "/users/#{@user.id}/edit" , class: "square-btn") %>
                    <%= link_to("削除", "/users/#{@user.id}/destroy", class: "square-btn") if current_user.admin? %>

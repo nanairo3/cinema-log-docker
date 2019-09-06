@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user, {only: [:index, :edit, :update, :destroy]}
   before_action :ensure_correct_user, {only: [:edit, :update, :destroy]}
+  before_action :forbid_login_user_admin_feature, {only: [:new]}
 
   def index
     @users = User.all
@@ -50,6 +51,13 @@ class UsersController < ApplicationController
     if !(current_user.admin?) && current_user.id != @user.id
       flash[:notice] = "権限がありません"
       redirect_to("/posts/index")
+    end
+  end
+  
+  def forbid_login_user_admin_feature
+    if current_user && !(current_user.admin?)
+      flash[:notice] = "すでにログインしています"
+      redirect_to root_path
     end
   end
 
