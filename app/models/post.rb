@@ -3,6 +3,7 @@ class Post < ApplicationRecord
     validates :cinema_id, {presence: true}
     belongs_to :user 
     belongs_to :cinema
+    
     def user
         return User.find(self.user_id)
     end

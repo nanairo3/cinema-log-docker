@@ -2,7 +2,7 @@
     <div class = "container">
         <div>
         <h1 class="users-heading">ユーザ一覧</h1>
-            <% if current_user? && current_user.admin %>
+            <% if current_user && current_user.admin %>
                 <%= link_to '新規登録', "/users/new", class: 'btn btn-primary' %>
             <% end %>
         </div>
