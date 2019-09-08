@@ -1,7 +1,7 @@
 User.create(
     name: 'test',
-    email: 'test',
-    password: 'test'
+    email: 'test@example.com',
+    password: 'testtest'
     )
     
 Cinema.create(

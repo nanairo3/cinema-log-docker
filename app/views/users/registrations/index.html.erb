@@ -10,7 +10,7 @@
             <div class="users-index-item">
                 <hr>
                 ユーザ名：
-                <%= link_to(user.name,"/users/#{user.id}") %>
+                <%= link_to(user.name,  user_registration_path(current_user.id)) %>
             </div>
         <% end %>
         <hr class = "users-index-item">
