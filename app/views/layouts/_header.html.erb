@@ -14,11 +14,11 @@
             <%= link_to("ユーザ一覧", "/users") %>
           </li>
           <li>
-            <%= link_to("Logout", "/logout", method: :post) %>
+            <%= link_to("Logout", destroy_user_session_path, method: :delete) %>
           </li>
         <% else %>
          <li>
-            <%= link_to("Login", "/login") %>
+            <%= link_to("Login", new_user_session_path) %>
           </li>
         <% end %>
       </ul>

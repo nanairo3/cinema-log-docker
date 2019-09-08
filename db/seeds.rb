@@ -1,8 +1,7 @@
 User.create(
-    name: 'root',
-    email: 'root',
-    admin: true,
-    password_digest: BCrypt::Password.create("root")
+    name: 'test',
+    email: 'test',
+    password: 'test'
     )
     
 Cinema.create(
@@ -19,7 +18,7 @@ Cinema.create(
             name: 'グレイテスト・ショーマン',
             image: 'https://images-na.ssl-images-amazon.com/images/I/51ZZC7QS-EL.jpg'
         }
-    ]    
+    ]
 )
 
 Post.create(
@@ -28,6 +27,6 @@ Post.create(
             content: '面白い！',
             user_id: 1,
             cinema_id: 1
-        }    
+        } 
     ]
 )

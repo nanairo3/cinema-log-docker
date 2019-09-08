@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user, {only: [:index, :edit, :update, :destroy]}
   before_action :ensure_correct_user, {only: [:edit, :update, :destroy]}
-  before_action :forbid_login_user_admin_feature, {only: [:new]}
 
   def index
     @users = User.all
@@ -25,15 +24,6 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  def update
-    @user = User.find(params[:id])
-
-    if @user.update(user_params)
-      redirect_to admin_user_url(@user), notice: "ユーザ「#{@user.name}」を更新しました"
-    else
-      render :edit
-    end
-  end
 
   def show
     @user = User.find(params[:id])
@@ -48,22 +38,15 @@ class UsersController < ApplicationController
 
   def ensure_correct_user
     @user = User.find(params[:id])
-    if !(current_user.admin?) && current_user.id != @user.id
+    if current_user.id != @user.id
       flash[:notice] = "権限がありません"
       redirect_to("/posts/index")
-    end
-  end
-  
-  def forbid_login_user_admin_feature
-    if current_user && !(current_user.admin?)
-      flash[:notice] = "すでにログインしています"
-      redirect_to root_path
     end
   end
 
   private
     def user_params
-      params.require(:user).permit(:name, :email, :admin, :password, :password_confirmation)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
 
 end
