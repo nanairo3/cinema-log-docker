@@ -1,7 +1,7 @@
 FactoryBot.define do
     factory :post do
         content {'最高！'}
-        user
-        cinema
+        association :user
+        association :cinema
     end
 end
