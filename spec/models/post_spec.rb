@@ -9,6 +9,6 @@ RSpec.describe Post, type: :model do
   it 'is invalid without an content' do
       post = FactoryBot.build(:post, content: nil)
       post.valid?
-      expect(post.errors[:content]).to include("can't be blank")
+      expect(post.errors[:content]).to include("を入力してください")
   end
 end

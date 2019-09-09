@@ -27,7 +27,10 @@ describe 'ログイン機能', type: :system do
             expect(page).to have_content 'メールアドレスまたはパスワードが違います。'
         end
         
-        it '未入力の時'
+        it '未入力の時' do
+           click_button 'Login'
+           expect(page).to have_content 'メールアドレスまたはパスワードが違います。'
+        end
     end
     
     

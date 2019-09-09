@@ -15,6 +15,6 @@ RSpec.describe Cinema, type: :model do
   it 'is valid without a image' do
       cinema = FactoryBot.build(:cinema, image: nil)
       cinema.valid?
-      expect(cinema.errors[:image]).to include("can't be blank") 
+      expect(cinema.errors[:image]).to include("を入力してください") 
   end
 end
