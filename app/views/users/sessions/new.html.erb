@@ -5,9 +5,17 @@
            <div class="form-body">
                 <%= form_with model: @user, url: user_session_path, id: 'new_user', class: 'new_user', local: true do |f| %>
                     <%= f.label :email, 'メールアドレス' %>
-                    <%= f.text_field :email, id: 'session_email' %>
+                    <%= f.text_field :email, autofocus: true, autocomplete: "email", id: 'session_email' %>
                     <%= f.label :password, 'パスワード' %>
-                    <%= f.password_field :password, id: 'session_password' %>
+                    <%= f.password_field :password,autocomplete: "current-password", id: 'session_password' %>
+                    
+                    <!--<% if devise_mapping.rememberable? %>-->
+                    <!--    <div class="field">-->
+                    <!--      <%= f.check_box :remember_me %>-->
+                    <!--      <%= f.label :remember_me %>-->
+                    <!--    </div>-->
+                    <!-- <% end %>-->
+                     
                     <%= f.submit 'Login', class: 'btn btn-primary' %>
                 <% end %>
                     <%= link_to("新規登録", new_user_registration_path, class: "seesion-new") %>

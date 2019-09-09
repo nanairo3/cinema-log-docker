@@ -23,7 +23,7 @@
                         <%= post.content %>
                     </div>
                     <div class="post-menu">
-                        <% if current_user.id == post.user_id %>
+                        <% if current_user && (current_user.id == post.user_id) %>
                             <%= link_to("編集", "/posts/#{post.id}/edit") %>
                             <%= link_to("削除", "/posts/#{post.id}/destroy", method: post) %>
                         <% end %>

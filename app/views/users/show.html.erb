@@ -1,11 +1,10 @@
 <div class="main user-show">
     <div class = "container">
         <div class="user">
-           <h1>User Name: <%= @user.name %></h1>
+           <h1>ユーザ名: <%= @user.name %></h1>
            <% if current_user && @user.id == current_user.id  %>
                <div class="square-content">
-                   <%= link_to("編集", "/users/#{@user.id}/edit" , class: "square-btn") %>
-                   <%= link_to("削除", "/users/#{@user.id}/destroy", class: "square-btn")  %>
+                   <%= link_to("編集", edit_user_registration_path , class: "square-btn") %>
                </div>
            <% end %>
            <% @posts.each do |post| %>

@@ -4,35 +4,11 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
-  # def new
-  #   @user = User.new
-  # end
-
-  # def create
-  #   @user = User.new(user_params)
-
-  #   if @user.save
-  #     redirect_to user_url(@user), nitice: "ユーザ「#{@user.name}」を登録しました"
-  #   else
-  #     render :new
-  #   end
-  # end
-
-  # def edit
-  #   @user = User.new
-  # end
-
-
   def show
     @user = User.find(params[:id])
     @posts = @user.posts
   end
 
-  # def destroy
-  #   @user = User.find(params[:id])
-  #   @user.destroy
-  #   redirect_to user_url, notice: "ユーザ「#{@user.name}」を削除しましたしました"
-  # end
 
   def ensure_correct_user
     @user = User.find(params[:id])
