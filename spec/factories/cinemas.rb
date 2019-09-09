@@ -1,6 +1,6 @@
 FactoryBot.define do
     factory :cinema do
-        name {'グリーンブック'}
-        image {'https://images-na.ssl-images-amazon.com/images/I/51tdBs32wuL.jpg'}
+        name {'マイ・インターン'}
+        image {'https://images-na.ssl-images-amazon.com/images/I/91duwMz5bPL._SY445_.jpg'}
     end
 end
