@@ -4,14 +4,14 @@
       </div>
       <ul class="header-menus">
         <li>
-          <%= link_to(User.find(current_user.id).name, user_registration_path(current_user.id)) if current_user %>
+          <%= link_to current_user.name, "/user/#{current_user.id}"  %>
         </li>
         <li>
           <%= link_to("映画一覧", root_path) %>
         </li>
         <% if current_user %>
           <li>
-            <%= link_to("ユーザ一覧", "/users") %>
+            <%= link_to("ユーザ一覧", users_path) %>
           </li>
           <li>
             <%= link_to("Logout", destroy_user_session_path, method: :delete) %>

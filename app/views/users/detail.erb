@@ -1,11 +1,7 @@
 <div class="main user-show">
     <div class = "container">
         <div class="user">
-           <h1>User Name: <%= @user.name %>
-               <% if current_user %>
-                   @管理者
-               <% end %>
-           </h1>
+           <h1>User Name: <%= @user.name %></h1>
            <% if current_user && @user.id == current_user.id  %>
                <div class="square-content">
                    <%= link_to("編集", "/users/#{@user.id}/edit" , class: "square-btn") %>
