@@ -4,7 +4,7 @@
       </div>
       <ul class="header-menus">
         <li>
-          <%= link_to current_user.name, "/user/#{current_user.id}"  %>
+          <%= link_to current_user.name, "/users/#{current_user.id}" if current_user %>
         </li>
         <li>
           <%= link_to("映画一覧", root_path) %>
