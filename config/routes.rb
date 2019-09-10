@@ -14,7 +14,10 @@ Rails.application.routes.draw do
 
 
   resources :users, only: [:index, :show]
-
+  
+  get 'setting/password', to: 'users#edit_password'
+  patch 'setting/password', to: 'users#update_password'
+  
   resources :posts, only: [:show]
   get 'posts/:id/new' => 'posts#new'
   post 'posts/:id/create' => 'posts#create'
