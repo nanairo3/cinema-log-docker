@@ -2,14 +2,15 @@
     <div class = "container">
         <div>
         <h1 class="users-heading">ユーザ一覧</h1>
-            <% if current_user %>
-                <%= link_to '新規登録', "/users/new", class: 'btn btn-primary' %>
-            <% end %>
         </div>
         <% @users.each do |user| %>
             <div class="users-index-item">
                 <hr>
-                ユーザ名：
+                <% if user.image.attached? %>
+                    <%= image_tag user.image %>
+                <% else %>
+                    <%= image_tag 'https://cinema-log.s3-ap-northeast-1.amazonaws.com/default.png' %>
+                <% end %>
                 <%= link_to(user.name,  "/users/#{user.id}") %>
             </div>
         <% end %>
