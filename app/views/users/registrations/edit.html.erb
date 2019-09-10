@@ -8,6 +8,11 @@
     <%= render "devise/shared/error_messages", resource: resource %>
     
     <div class = "field">
+      <%= f.label :image, 'アイコンを変更する' %><br />
+      <%= f.file_field :image%>
+    </div>
+    
+    <div class = "field">
       <%= f.label :name, '名前' %><br />
       <%= f.text_field :name, autofocus: true %>
     </div>

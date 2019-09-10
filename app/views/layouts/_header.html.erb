@@ -4,14 +4,20 @@
       </div>
       <ul class="header-menus">
         <li>
-          <%= link_to current_user.name, "/users/#{current_user.id}" if current_user %>
-        </li>
-        <li>
           <%= link_to("映画一覧", root_path) %>
         </li>
         <% if current_user %>
+          <li class= "plofile_image">
+            <%= link_to( users_path ) do %>
+              <% if current_user.image.attached? %>
+                <%= image_tag current_user.image %>
+              <% else %>
+                <%= image_tag 'https://cinema-log.s3-ap-northeast-1.amazonaws.com/default.png' %>
+              <% end %>
+            <% end %>
+          </li>
           <li>
-            <%= link_to("ユーザ一覧", users_path) %>
+            <%= link_to current_user.name, "/users/#{current_user.id}" %>
           </li>
           <li>
             <%= link_to("Logout", destroy_user_session_path, method: :delete) %>
