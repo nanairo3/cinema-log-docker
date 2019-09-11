@@ -7,7 +7,7 @@ FactoryBot.define do
   end
   
   factory :other_user, class: 'User' do
-    sequence(:name) { |n| "アザーユーザー_#{n}" }
+    sequence(:name) { |n| "otherユーザー_#{n}" }
     sequence(:email) { |n| "other_#{n}@example.com" }
     password { 'password' }
     password_confirmation { 'password' }
