@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   has_one_attached :image
   # Include default devise modules. Others available are:
@@ -5,12 +7,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   validates :name, presence: true
-  
+
   def remember_me
     true
   end
 
   def posts
-    return @posts = Post.where(user_id: self.id)
+    @posts = Post.where(user_id: id)
   end
 end
