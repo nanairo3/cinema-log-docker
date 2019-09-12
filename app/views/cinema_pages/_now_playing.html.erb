@@ -1,22 +1,22 @@
-<div class="">
+<div class = "cinema-index-item">
   <h2 class="center" style="margin-bottom:15px;color:#24140e;">上映中</h2>
   <hr style="margin-bottom: 25px;">
-  <div class="row">
+    <div class = "cinema_image">
     <% @movies[0..3].each do |m| %>
-      <div class="col-md-2 playing_content">
+      
         <%= link_to "/movies/#{m["id"]}" do %>
           <%= image_tag "https://image.tmdb.org/t/p/w500#{m["backdrop_path"]}",
                         class: "img-responsive",
                         alt: "movie pic" %>
           <div class="caption">
             <p><%= m["title"] %></p>
-          </div>
+          
         <% end %>
+        </div>
       </div>
     <% end %>
-  </div>
 
-  <div class="row">
+ 
     <% @movies[4..7].each do |m| %>
         <%= link_to "/movies/#{m["id"]}" do %>
           <%= image_tag "https://image.tmdb.org/t/p/w500#{m["backdrop_path"]}",
@@ -27,9 +27,7 @@
           </div>
         <% end %>
     <% end %>
-  </div>
 
-  <div class="row">
     <% @movies[8...12].each do |m| %>
         <%= link_to "/movies/#{m["id"]}", :target => "new" do %>
           <%= image_tag "https://image.tmdb.org/t/p/w500#{m["backdrop_path"]}",
@@ -40,5 +38,4 @@
           </div>
         <% end %>
     <% end %>
-  </div>  
 </div>

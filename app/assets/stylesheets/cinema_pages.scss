@@ -1,15 +1,19 @@
 /* cinema item */
 .cinema-index-item {
   text-align: center;
+  
   .cinema_image {
-    display: inline-block;
-    text-align: center;
+    display: flex;
     font-weight: bold;
-    margin: 10px 30px;
-  }
-  p {
-    color: #f1eeee;
-    margin: 10px 0 15px 0;
+    margin: 10px 5px;
+    img{
+      width: 50%;
+      height: 50%; 
+    }
+    p {
+      color: #f1eeee;
+      margin: 10px 0 15px 0;
+    }
   }
 }
 
@@ -18,17 +22,3 @@ a {
   color: #2d3133;
   font-size: 14px;
 }
-
-  h2 {
-    font-size: 50px;
-    margin-bottom: 10px;
-  }
-  .playing_content{
-    margin: 0 3px 10px 3px;
-    img {
-      
-      text-align: center;
-      font-weight: bold;
-      margin: 10px 30px;
-    }
-  }
