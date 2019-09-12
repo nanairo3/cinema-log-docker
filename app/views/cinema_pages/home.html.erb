@@ -1,14 +1,7 @@
 <div class="about-main">
   <div class="container">
     <div class = "cinema-index-item">
-      <% @cinemas.each do |cinema| %>
-        <div class = "cinema_image">
-          <%= link_to("/posts/#{cinema.id}") do %>
-            <%= image_tag cinema.image, :width => '240px', :height => '340px' %>
-            <p><%= cinema.name %></p>
-          <% end %>
-        </div>
-      <% end %>
+      <%= render 'now_playing' %>
     </div>
   </div>
-</div>
+</div> 
