@@ -4,11 +4,21 @@ class Movie < ApplicationRecord
   include HTTParty
 
   default_options.update(verify: false)
-  default_params api_key: "#{ Rails.application.credentials.api_key }"
+  default_params api_key: Rails.application.credentials.api_key.to_s
   format :json
 
-  def self.now_playing(page = 1)
+  def self.now_playing(page)
     base_uri 'https://api.themoviedb.org/3/movie/now_playing'
     get('', query: { page: page, language: 'ja-JP', region: 'JP' })['results']
+  end
+
+  def self.details(id)
+    base_uri "https://api.themoviedb.org/3/movie/#{id}"
+    get('', query: { language: 'ja-JP', append_to_response: 'credits' })
+  end
+
+  def self.trailers(id)
+    base_uri "https://api.themoviedb.org/3/movie/#{id}/videos"
+    get('', query: {})['results']
   end
 end

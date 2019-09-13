@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: %i[index show]
+  resources :cinema_pages, only: [:show]
 
   get 'setting/password', to: 'users#edit_password'
   patch 'setting/password', to: 'users#update_password'
