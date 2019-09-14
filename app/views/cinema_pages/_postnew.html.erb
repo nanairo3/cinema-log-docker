@@ -1,0 +1,21 @@
+<div class="content2">
+    <% @posts.each do |post| %>
+        <% user = post.user %>
+        <div class="post-content">
+            <div class="post-user-name">
+                <%= link_to(user.name + "の感想", "/users/#{user.id}") %>
+            </div>
+            <p><%= post.updated_at %></p>
+            <hr>
+            <div class="post-user-content">
+                <%= post.content %>
+            </div>
+            <div class="post-menu">
+                <% if current_user && (current_user.id == post.user_id) %>
+                    <%= link_to("編集", "/posts/#{post.id}/edit") %>
+                    <%= link_to("削除", "/posts/#{post.id}/destroy", method: post) %>
+                <% end %>
+            </div>
+        </div>
+    <% end %>
+</div>

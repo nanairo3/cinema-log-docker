@@ -9,15 +9,18 @@ User.create(
 Cinema.create(
   [
     {
-      name: 'グリーンブック',
+      movie_id: 384018,
+      title: 'グリーンブック',
       image: 'https://images-na.ssl-images-amazon.com/images/I/51tdBs32wuL._SY445_.jpg'
     },
     {
-      name: 'マイ・インターン',
+      movie_id: 384018,
+      title: 'マイ・インターン',
       image: 'https://images-na.ssl-images-amazon.com/images/I/91duwMz5bPL._SY445_.jpg'
     },
     {
-      name: 'グレイテスト・ショーマン',
+      movie_id: 384018,
+      title: 'グレイテスト・ショーマン',
       image: 'https://images-na.ssl-images-amazon.com/images/I/51ZZC7QS-EL.jpg'
     }
   ]

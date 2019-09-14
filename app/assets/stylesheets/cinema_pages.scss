@@ -29,3 +29,44 @@
     }
   }
 }
+
+.cinema-show-content{
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding-bottom: 40px;
+  .cinema-left-content{
+    width: 260px;
+    .cinema-image {
+      display: inline-block;
+      position: relative;
+      img {
+        height: auto;
+        max-width: 100%;
+      }
+    }
+  }
+  .cinema-right-content {
+    margin-left: 40px;
+    width: 700px;
+    .thumbnail {
+      img {
+        width: 100%;
+        height: auto;
+      }
+      .caption{
+        width: 100%;
+      }
+    }
+  }
+}
+
+.cinema-post{
+  width: 640px;
+  margin-bottom: 20px;
+}

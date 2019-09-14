@@ -1,5 +1,5 @@
-<div class="col-md-8" style="padding-left:20px;padding-right:20px;">
-	
+
+<div class="col-md-11" style="padding-left:20px;padding-right:20px;">
 	<% if @movie["original_language"] != "ja" %>
 		<h1><%= @movie["title"] %></h1>
 		<h2 class="center">原題：<%= @movie["original_title"] %></h2>
@@ -7,15 +7,6 @@
 		<h1><%= @movie["original_title"] %></h1>
 	<% end %>
 
-	<% unless @movie["belongs_to_collection"].nil? %>
-		<div class="collection">
-			<strong>コレクション：</strong>
-			<%= link_to @movie["belongs_to_collection"]["name"], 
-									controller: "movies", action: "show_collection", id: "#{@movie["belongs_to_collection"]["id"]}" %>
-		</div>
-	<% end %>
-
-	<div class="details">
 		<p><strong>上映日：</strong><%= @movie["release_date"] %></p>
 
 		<% unless @movie["runtime"].blank? %>
@@ -63,9 +54,7 @@
 				<span><%= @movie["overview"] %></span>
 			<% end %>
 		</p>
-	</div>
 
-	<div class="cast">
 		<p><strong>キャスト：</strong></p>
 		<div class="row" style="margin:0;">
 			<% (0...@cast_range).each do |i| %>
@@ -89,8 +78,7 @@
 					</div>
 			<% end %>
 		</div>
-	</div>
-	
+
 	<p><strong>スタッフ：</strong></p>
 	<p>
 	<% unless @directors.blank? %>
@@ -129,7 +117,7 @@
 		<% @story.each do |key, value| %>
 			<%= key %>
 			<% count += 1 %>
-			<% unless count == @story_count %> / <% end %> 
+			<% unless count == @story_count %> / <% end %>
 		<% end %>
 		<br>
 	<% end %>
@@ -159,10 +147,10 @@
 			<p><strong>予告動画：</strong></p>
 			<div class="row">
 				<% range = @trailers.count == 1 ? 0:1 %>
-					
+
 				<% @trailers[0..range].each do |t| %>
 					<div class="col-md-6 col-sm-6">
-						<% iframe = content_tag(:iframe, '', width: 300, height: 166, 
+						<% iframe = content_tag(:iframe, '', width: 300, height: 166,
 																		src: "https://www.youtube.com/embed/#{t["key"]}",
 																		frameborder: 0, allowfullscreen: true) %>
 						<%= content_tag(:div, iframe, class: "youtube-container") %>

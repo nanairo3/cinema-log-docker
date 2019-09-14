@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class CinemaPagesController < ApplicationController
-  
+
   def home
     response = Movie.now_playing(1)
     @movies = []
@@ -18,6 +18,7 @@ class CinemaPagesController < ApplicationController
 
   def show
     @movie = Movie.details(params[:id])
+    @posts = Post.where(movie_id: params[:id])
     @cast_range = if @movie['credits']['cast'].count > 6
                     6
                   else
@@ -45,25 +46,6 @@ class CinemaPagesController < ApplicationController
     @screenplay_count = @screenplay.size
     @novel_count = @novel.size
     @music_count = @music.size
-
-    # if Movie.exists?(@movie["id"])
-    #   # find movie object from database
-    #   @movie_db = Movie.find(@movie["id"])
-    #   # paginate all of the movie's comments
-    #   @comments = @movie_db.comments.paginate(page: params[:page])
-    # end
   end
-
-  def show_person
-    @person = Movie.person_details(params[:id])
-
-    @movie_credits = []
-    if @person['known_for_department'] == 'Acting'
-      @person['movie_credits']['cast'].each do |movie|
-        next if movie['character'].blank? || movie['release_date'].blank?
-
-        @movie_credits << movie
-      end
-    end
-  end
+  
 end

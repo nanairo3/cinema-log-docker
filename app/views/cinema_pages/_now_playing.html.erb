@@ -1,6 +1,5 @@
 <div class = "cinema-index-item">
   <h2 class="cinema-heading" >上映中</h2>
-  <hr style="margin-bottom: 25px;">
     <% @movies.each do |m| %>
     <div class = "cinema_image">
         <%= link_to "/cinema_pages/#{m["id"]}" do %>
