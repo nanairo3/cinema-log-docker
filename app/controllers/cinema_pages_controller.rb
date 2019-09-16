@@ -18,7 +18,7 @@ class CinemaPagesController < ApplicationController
 
   def show
     @movie = Movie.details(params[:id])
-    @posts = Post.where(movie_id: params[:id])
+    @posts = Post.where(cinema_id: Cinema.find_by(movie_id: params[:id]))
     @cast_range = if @movie['credits']['cast'].count > 6
                     6
                   else
