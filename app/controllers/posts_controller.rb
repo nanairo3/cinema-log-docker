@@ -46,7 +46,8 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_to "/posts/#{@post.cinema_id}", notice: '削除しましたしました'
+    redirect_to("/cinema_pages/#{Cinema.find(@post.cinema_id).movie_id}")
+    flash[:notice] = '削除しました'
   end
 
   def post_params
