@@ -1,16 +1,18 @@
 # frozen_string_literal: true
 
 User.create(
+  [
   {
     name: 'test',
     email: 'test@example.com',
-    password: 'testtest'
-  }
+    password: 'testtest',
+  },
   {
     name: 'testユーザ',
     email: 'testuser@vwxyz.com',
-    password: 'test39pass'
+    password: 'test39pass',
   }
+  ]
 )
 
 Cinema.create(
