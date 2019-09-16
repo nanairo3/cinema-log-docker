@@ -2,25 +2,28 @@
 
 class PostsController < ApplicationController
   before_action :authenticate_user!, only: %i[new create]
-  before_action :ensure_correct_user, only: %i[edit update destroy]
-
-  def show
-    @cinema = Cinema.find(params[:id])
-    @posts = Post.where(cinema_id: @cinema.id)
-  end
 
   def new
-    @cinema = Cinema.find(params[:id])
+    if Cinema.find_by(movie_id: params[:id]).nil?
+      @movie = Movie.details(params[:id])
+      @cinema = Cinema.new
+      @cinema.movie_id = @movie["id"]
+      @cinema.title = @movie["title"]
+      @cinema.image = "https://image.tmdb.org/t/p/original#{@movie["poster_path"]}"
+      @cinema.save
+    else
+      @cinema = Cinema.find_by(movie_id: params[:id])
+    end
     @post = Post.new
   end
 
   def create
     @post = Post.new(post_params)
-    @post.cinema_id = params[:id]
     @post.user_id = current_user.id
+    @post.cinema_id = params[:id]
     if @post.save
       flash[:notice] = '投稿を作成しました'
-      redirect_to("/posts/#{@post.cinema_id}")
+      redirect_to("/cinema_pages/#{Cinema.find(@post.cinema_id).movie_id}")
     else
       render('post/new')
     end
@@ -33,7 +36,7 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     if @post.update(post_params_edit)
-      redirect_to("/posts/#{@post.cinema_id}")
+      redirect_to("/cinema_pages/#{Cinema.find(@post.cinema_id).movie_id}")
       flash[:notice] = '更新しました'
     else
       render('posts/edit')
@@ -43,7 +46,8 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_to "/posts/#{@post.cinema_id}", notice: '削除しましたしました'
+    redirect_to("/cinema_pages/#{Cinema.find(@post.cinema_id).movie_id}")
+    flash[:notice] = '削除しました'
   end
 
   def post_params
@@ -54,13 +58,7 @@ class PostsController < ApplicationController
     params.require(:post).permit(:cinema_id, :content)
   end
 
-  def ensure_correct_user
-    @post = Post.find_by(id: params[:id])
-    if current_user.id != @post.user_id
-      flash[:notice] = '権限がありません'
-      redirect_to("/post/#{@post.cinema_id}")
-    end
-  end
+
 
   def authenticate_user_new
     if current_user.nil?

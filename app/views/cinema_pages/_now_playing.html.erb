@@ -1,0 +1,15 @@
+<div class = "cinema-index-item">
+  <h2 class="cinema-heading" >上映中</h2>
+    <% @movies.each do |m| %>
+    <div class = "cinema_image">
+        <%= link_to "/cinema_pages/#{m["id"]}" do %>
+          <%= image_tag "https://image.tmdb.org/t/p/w200#{m["poster_path"]}",
+                        class: "img-responsive",
+                        alt: "movie pic" %>
+          <div class="caption">
+          <p><%= m["title"] %></p>
+        <% end %>
+        </div>
+      </div>
+    <% end %>
+</div>
