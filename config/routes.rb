@@ -27,6 +27,8 @@ Rails.application.routes.draw do
   patch 'posts/:id/update' => 'posts#update'
   post 'posts/:id/update' => 'posts#update'
   post 'posts/:id/destroy' => 'posts#destroy'
+  
+  resources :watched_cinemas, only: [:create, :destroy]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
