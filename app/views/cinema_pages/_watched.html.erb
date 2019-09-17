@@ -1,0 +1,9 @@
+<% if Watched_cinema.find_by(user_id: current_user.id, cinema_id: @movie["id"]) %>
+  <%= link_to( watched_cinema_path(@movie["id"]), {method: :post}) do %>
+    <span class="btn"></span>
+  <% end %>
+<% else %>
+  <%= link_to(watched_cinemas_path(@movie["id"]), {method: :post}) do %>
+    <i class="material-icons">remove_red_eye</i>
+  <% end %>
+<% end %>
