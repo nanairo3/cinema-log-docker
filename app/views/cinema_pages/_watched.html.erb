@@ -1,9 +1,9 @@
-<% if Watched_cinema.find_by(user_id: current_user.id, cinema_id: @movie["id"]) %>
-  <%= link_to( watched_cinema_path(@movie["id"]), {method: :post}) do %>
-    <span class="btn"></span>
+<% if WatchedCinema.find_by(user_id: current_user.id, cinema_id: Cinema.find_by(movie_id: @movie["id"])) %>
+  <%= link_to( "/watched_cinemas/#{@movie["id"]}/destroy", {method: :post}) do %>
+    <i class="material-icons pink">remove_red_eye</i>
   <% end %>
 <% else %>
-  <%= link_to(watched_cinemas_path(@movie["id"]), {method: :post}) do %>
-    <i class="material-icons">remove_red_eye</i>
+  <%= link_to("/watched_cinemas/#{@movie["id"]}/create", {method: :post, class: "btn-circle-3d"}) do %>
+    <i class="material-icons red">remove_red_eye</i>
   <% end %>
 <% end %>
