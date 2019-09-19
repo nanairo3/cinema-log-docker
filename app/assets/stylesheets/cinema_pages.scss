@@ -13,6 +13,7 @@
   .cinema_image {
     width: 32%;
     margin: 0 0 30px 0;
+    flex-direction: column;
     img{
       width: 100%;
       height: auto;
@@ -40,8 +41,10 @@
   -ms-flex-pack: justify;
   justify-content: space-between;
   padding-bottom: 40px;
+  
   .cinema-left-content{
     width: 260px;
+    text-align: center;
     .cinema-image {
       display: inline-block;
       position: relative;
@@ -55,7 +58,7 @@
       text-decoration: none;
       background: #333333;
       color: #FFF;
-      width: 180px;
+      width: 35%;
       height: 60px;
       line-height: 75px;
       border-radius: 20%;
@@ -66,14 +69,17 @@
       border-bottom: solid 3px #000000;
       transition: .4s;
       margin-top: 10px;
-    }
-    .btn-circle-3d:active {
-      -webkit-transform: translateY(2px);
-      transform: translateY(2px);
-      box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
-      border-bottom: none;
+    
+      &:active {
+        -webkit-transform: translateY(2px);
+        transform: translateY(2px);
+        box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
+        border-bottom: none;
+      }
     }
   }
+  
+  
   .cinema-right-content {
     margin-left: 40px;
     width: 700px;
@@ -93,3 +99,53 @@
   width: 640px;
   margin-bottom: 20px;
 }
+
+.btn-circle-watching {
+      display: inline-block;
+      text-decoration: none;
+      background: #333333;
+      color: #FFF;
+      width: 35%;
+      height: 60px;
+      line-height: 75px;
+      border-radius: 20%;
+      text-align: center;
+      font-weight: bold;
+      overflow: hidden;
+      box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
+      border-bottom: solid 3px #000000;
+      transition: .4s;
+      margin-top: 10px;
+      opacity: 0.5;
+    
+      &:active {
+        -webkit-transform: translateY(2px);
+        transform: translateY(2px);
+        box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
+        border-bottom: none;
+      }
+  }
+    .btn-circle-watched {
+      display: inline-block;
+      text-decoration: none;
+      background: #333333;
+      color: #fcc800;
+      width: 35%;
+      height: 60px;
+      line-height: 75px;
+      border-radius: 20%;
+      text-align: center;
+      font-weight: bold;
+      overflow: hidden;
+      box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
+      border-bottom: solid 3px #000000;
+      transition: .4s;
+      margin-top: 10px;
+    
+      &:active {
+        -webkit-transform: translateY(2px);
+        transform: translateY(2px);
+        box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
+        border-bottom: none;
+      }
+  }
