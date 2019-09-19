@@ -1,9 +1,11 @@
 <% if Cinema.find_by(movie_id: @movie["id"]) && WatchedCinema.find_by(user_id: current_user.id, cinema_id: Cinema.find_by(movie_id: @movie["id"]).id ) %>
   <%= link_to( "/watched_cinemas/#{@movie["id"]}/destroy", {method: :post, class: "btn-circle-watched", title: "もう観た！"}) do %>
     <i class="material-icons pink">remove_red_eye</i>
+    <%= @watchedcount %>
   <% end %>
 <% else %>
   <%= link_to("/watched_cinemas/#{@movie["id"]}/create", {method: :post, class: "btn-circle-watching", title: "観たらクリック！"}) do %>
     <i class="material-icons red">remove_red_eye</i>
+    <%= @watchedcount %>
   <% end %>
 <% end %>
