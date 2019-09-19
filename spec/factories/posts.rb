@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :post do
-    content { '最高！' }
+    sequence(:content) { |n| "最高！#{n}" }
     association :user
     association :cinema
   end

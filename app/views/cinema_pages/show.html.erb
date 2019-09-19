@@ -10,10 +10,14 @@
           <div class="cinema-image">
             <%= image_tag("https://image.tmdb.org/t/p/original#{@movie["poster_path"]}",
                           :class => "img-responsive", :alt => "poster") %>
+              
           </div>
           <div>
-            <%= link_to("/posts/#{@movie["id"]}/new", class: "btn-circle-3d") do %>
+            <%= link_to("/posts/#{@movie["id"]}/new", class: "btn-circle-3d", title: "コメントする！" ) do %>
                     <i class="material-icons"> message </i>
+            <% end %>
+            <%if user_signed_in? %>
+              <%= render 'cinema_pages/watched' %>
             <% end %>
           </div>
         </div>
@@ -21,7 +25,7 @@
           <%= render 'cinema_pages/movie_detail' %>
         </div>
       </div>
-      <div class="cinema-post">
+      <div class="cinema-post" >
         <%= render 'cinema_pages/postnew' %>
       </div>
   </div>

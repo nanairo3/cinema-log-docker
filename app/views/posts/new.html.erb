@@ -1,19 +1,25 @@
 <div class="about-main">
-    <div class="container">
-        <div class="content1">
-            <%= image_tag @cinema.image %>
-        </div>
-        <div class="content2">
-        <div class="form-heading">投稿する</div>
-               <div class="form">
-                <div class="form-body">
-                    <%= form_with model: @post, url: "/posts/#{@cinema.id}/create"  do |form| %>
-                        <%= form.label :content, 'コメント'  %>
-                        <%= form.text_area :content %>
-                        <%= form.submit "投稿", class: 'btn btn-primary'  %>
-                    <% end %>
-                </div>
-            </div>
-        </div>
+  <div class="container">
+    <div class="content1">
+        <%= image_tag @cinema.image %>
     </div>
+    <div class="content2">
+      <div class="form-heading">投稿する</div>
+       <div class="form">
+        <div class="form-body">
+          <% @post.errors.full_messages.each do |message| %>
+            <div class="form-error">
+              <%= message %>
+            </div>
+          <% end %>
+
+          <%= form_with model: @post, url: "/posts/#{@cinema.id}/create", local: true do |form| %>
+              <%= form.label :content, 'コメント'  %>
+              <%= form.text_area :content %>
+              <%= form.submit "投稿", class: 'btn btn-primary'  %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

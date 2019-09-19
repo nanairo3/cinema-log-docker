@@ -1,7 +1,10 @@
 # CinemaLog
 
 ## 概要
-映画の共有SNSです。  
+映画の共有SNSです。 
+
+## heroku URL
+` https://thawing-tor-44785.herokuapp.com`
 
 ## 機能
 - ユーザー管理機能

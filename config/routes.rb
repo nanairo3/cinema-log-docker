@@ -27,6 +27,9 @@ Rails.application.routes.draw do
   patch 'posts/:id/update' => 'posts#update'
   post 'posts/:id/update' => 'posts#update'
   post 'posts/:id/destroy' => 'posts#destroy'
+  
+  post 'watched_cinemas/:id/create' => 'watched_cinemas#create'
+  post 'watched_cinemas/:id/destroy' => 'watched_cinemas#destroy'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

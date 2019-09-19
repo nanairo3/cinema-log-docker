@@ -18,6 +18,7 @@ class PostsController < ApplicationController
   end
 
   def create
+    @cinema = Cinema.find(params[:id])
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     @post.cinema_id = params[:id]
@@ -25,7 +26,7 @@ class PostsController < ApplicationController
       flash[:notice] = '投稿を作成しました'
       redirect_to("/cinema_pages/#{Cinema.find(@post.cinema_id).movie_id}")
     else
-      render('post/new')
+      render('posts/new')
     end
   end
 

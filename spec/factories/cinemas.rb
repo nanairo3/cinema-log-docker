@@ -2,7 +2,8 @@
 
 FactoryBot.define do
   factory :cinema do
-    name { 'マイ・インターン' }
-    image { 'https://images-na.ssl-images-amazon.com/images/I/91duwMz5bPL._SY445_.jpg' }
+    title { 'The Lion King' }
+    image { 'https://image.tmdb.org/t/p/original/pSfwXxP94xktZKn3UaeVe6VdFZl.jpg' }
+    movie_id { 420818 }
   end
 end
