@@ -13,6 +13,7 @@
   .cinema_image {
     width: 32%;
     margin: 0 0 30px 0;
+    flex-direction: column;
     img{
       width: 100%;
       height: auto;
@@ -76,7 +77,30 @@
         border-bottom: none;
       }
     }
-    .btn-circle-watching {
+  }
+  
+  
+  .cinema-right-content {
+    margin-left: 40px;
+    width: 700px;
+    .thumbnail {
+      img {
+        width: 100%;
+        height: auto;
+      }
+      .caption{
+        width: 100%;
+      }
+    }
+  }
+}
+
+.cinema-post{
+  width: 640px;
+  margin-bottom: 20px;
+}
+
+.btn-circle-watching {
       display: inline-block;
       text-decoration: none;
       background: #333333;
@@ -125,25 +149,3 @@
         border-bottom: none;
       }
   }
-  }
-  
-  
-  .cinema-right-content {
-    margin-left: 40px;
-    width: 700px;
-    .thumbnail {
-      img {
-        width: 100%;
-        height: auto;
-      }
-      .caption{
-        width: 100%;
-      }
-    }
-  }
-}
-
-.cinema-post{
-  width: 640px;
-  margin-bottom: 20px;
-}
