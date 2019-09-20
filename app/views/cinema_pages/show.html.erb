@@ -16,9 +16,7 @@
             <%= link_to("/posts/#{@movie["id"]}/new", class: "btn-circle-3d", title: "コメントする！" ) do %>
                     <i class="material-icons"> message </i>
             <% end %>
-            <%if user_signed_in? %>
               <%= render 'cinema_pages/watched' %>
-            <% end %>
           </div>
         </div>
         <div class="cinema-right-content">

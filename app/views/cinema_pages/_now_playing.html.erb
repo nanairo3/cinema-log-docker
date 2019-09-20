@@ -11,15 +11,15 @@
         <% end %>
         </div>
         <div>
-          <% if Cinema.find_by(movie_id: m["id"]) && WatchedCinema.find_by(user_id: current_user.id, cinema_id: Cinema.find_by(movie_id: m["id"]).id ) %>
+          <% if Cinema.find_by(movie_id: m["id"]) && WatchedCinema.find_by(cinema_id: Cinema.find_by(movie_id: m["id"]).id ) %>
             <%= link_to( "/watched_cinemas/#{m["id"]}/destroy", {method: :post, remote: true, class: "btn-circle-watched", title: "もう観た！"}) do %>
               <i class="material-icons pink">remove_red_eye</i>
-              <%= @watchedcount %>
+              <%= WatchedCinema.where(cinema_id: Cinema.find_by(movie_id: m["id"]).id).count if Cinema.find_by(movie_id: m["id"]) %>
             <% end %>
           <% else %>
             <%= link_to("/watched_cinemas/#{m["id"]}/create", {method: :post, remote: true, class: "btn-circle-watching", title: "観たらクリック！"}) do %>
               <i class="material-icons red">remove_red_eye</i>
-              <%= @watchedcount %>
+              <%= WatchedCinema.where(cinema_id: Cinema.find_by(movie_id: m["id"]).id).count if Cinema.find_by(movie_id: m["id"]) %>
             <% end %>
           <% end %>
         </div>
