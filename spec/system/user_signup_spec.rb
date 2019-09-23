@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 describe 'ユーザ新規登録', type: :system do
+  let!(:cinema){ create(:cinema) }
+  let!(:post){ create(:post, cinema: cinema) }
   let!(:test_user) { create(:user) }
 
   before do
